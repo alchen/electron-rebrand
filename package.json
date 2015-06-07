@@ -1,0 +1,31 @@
+{
+  "name": "electron-rebrand",
+  "version": "1.0.0",
+  "description": "Rebrands the electron distributable",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alchen/electron-rebrand.git"
+  },
+  "author": "Alexander Chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alchen/electron-rebrand/issues"
+  },
+  "homepage": "https://github.com/alchen/electron-rebrand#readme",
+  "dependencies": {
+    "async": "^1.2.0",
+    "electron-download": "^1.0.0",
+    "extract-zip": "^1.0.3",
+    "minimist": "^1.1.1",
+    "mkdirp": "^0.5.0",
+    "mv": "^2.0.3",
+    "ncp": "^2.0.0",
+    "plist": "^1.1.0",
+    "rcedit": "^0.3.0",
+    "rimraf": "^2.3.2"
+  }
+}
