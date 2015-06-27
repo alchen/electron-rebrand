@@ -9,9 +9,10 @@ var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 
 var mac = require('./mac.js');
+var win32 = require('./win32.js');
 
-module.exports = function (opts, cb) {
-  var packager;
+module.exports = function packager (opts, cb) {
+  var platformPackager;
   var platform = opts.platform;
   var arch = opts.arch;
   var version = opts.version;
@@ -25,7 +26,8 @@ module.exports = function (opts, cb) {
   }
 
   switch (platform) {
-    case 'darwin': packager = mac; break;
+    case 'darwin': platformPackager = mac; break;
+    case 'win32': platformPackager = win32; break;
     default: return cb(new Error('Unsupported platform. Must be either darwin, linux, or win32'));
   }
 
@@ -44,7 +46,7 @@ module.exports = function (opts, cb) {
         if (err) return cb(err);
         extract(zipPath, {dir: tmpDir}, function (err) {
           if (err) return cb(err);
-          packager.createApp(opts, tmpDir, cb);
+          platformPackager.createApp(opts, tmpDir, cb);
         });
       });
     });

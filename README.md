@@ -2,7 +2,7 @@
 
 This tool is mostly based on [electron-packager](https://github.com/maxogden/electron-packager), but in a more stripped down form that does the [complete rebranding](http://electron.atom.io/docs/latest/tutorial/application-distribution/), including the helper apps, and also removes the default app and icon, to make it easier to incorporate into a customizeable build flow.
 
-At this point, only the OS X portion is implementated.
+At this point, only the OS X and Win32 portions are implementated.
 
 ## Usage:
 
