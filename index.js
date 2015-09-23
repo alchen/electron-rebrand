@@ -8,9 +8,6 @@ var extract = require('extract-zip');
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 
-var mac = require('./mac.js');
-var win32 = require('./win32.js');
-
 module.exports = function packager (opts, cb) {
   var platformPackager;
   var platform = opts.platform;
@@ -26,9 +23,9 @@ module.exports = function packager (opts, cb) {
   }
 
   switch (platform) {
-    case 'darwin': platformPackager = mac; break;
-    case 'win32': platformPackager = win32; break;
-    default: return cb(new Error('Unsupported platform. Must be either darwin, linux, or win32'));
+    case 'darwin': platformPackager = require('./mac.js'); break;
+    case 'win32': platformPackager = require('./win32.js'); break;
+    default: return cb(new Error('Unsupported platform. Must be either darwin or win32'));
   }
 
   download({
@@ -37,7 +34,7 @@ module.exports = function packager (opts, cb) {
     version: version
   }, function (err, zipPath) {
     if (err) return cb(err);
-    console.error('Packaging app for platform', platform + ' ' + arch, 'using electron v' + version);
+    console.log('Packaging app for platform', platform, arch, 'using electron v' + version);
     // extract zip into tmp so that packager can use it as a template
     var tmpDir = path.join(os.tmpdir(), 'electron-packager-' + platform + '-template');
     rimraf(tmpDir, function (err) {
