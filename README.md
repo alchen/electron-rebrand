@@ -15,7 +15,8 @@ var options = {
   version: '0.27.2',
   'app-bundle-id': 'com.example.' + appName,
   'app-version': appVersion,
-  out: './output'
+  out: './output',
+  teamID: "developerTeamID"
 };
 packager(options, function (err, appPath) {
   callback(err);

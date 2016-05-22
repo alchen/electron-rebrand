@@ -64,6 +64,7 @@ function buildMacApp(opts, cb, newApp) {
   appPList.CFBundleIdentifier = bundleId;
   appPList.CFBundleName = opts.name;
   appPList.CFBundleIconFile = opts.name + '.icns';
+  appPList.ElectronTeamID = opts.teamID;
 
   helperPList.CFBundleIdentifier = bundleId + '.helper';
   helperPList.CFBundleName = opts.name + ' Helper';
