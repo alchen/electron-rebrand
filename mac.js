@@ -81,6 +81,7 @@ function buildMacApp(opts, cb, newApp) {
 
   if (appVersion) {
     appPList.CFBundleVersion = appVersion;
+    appPList.CFBundleShortVersionString = appVersion;
   }
 
   if (opts.protocols) {
